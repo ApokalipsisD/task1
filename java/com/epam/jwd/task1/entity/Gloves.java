@@ -3,9 +3,9 @@ package com.epam.jwd.task1.entity;
 public class Gloves extends Ammunition {
     private String type;
     private String season;
-    private String waterResistance;
+    private boolean waterResistance;
 
-    public Gloves(int cost, int weight, String size, String type, String season, String waterResistance) {
+    public Gloves(int cost, int weight, String size, String type, String season, boolean waterResistance) {
         super(cost, weight, size);
         this.type = type;
         this.season = season;
@@ -28,11 +28,11 @@ public class Gloves extends Ammunition {
         this.season = season;
     }
 
-    public String getWaterResistance() {
+    public boolean getWaterResistance() {
         return waterResistance;
     }
 
-    public void setWaterResistance(String waterResistance) {
+    public void setWaterResistance(boolean waterResistance) {
         this.waterResistance = waterResistance;
     }
 
@@ -51,9 +51,9 @@ public class Gloves extends Ammunition {
 
         Gloves gloves = (Gloves) o;
 
+        if (waterResistance != gloves.waterResistance) return false;
         if (type != null ? !type.equals(gloves.type) : gloves.type != null) return false;
-        if (season != null ? !season.equals(gloves.season) : gloves.season != null) return false;
-        return waterResistance != null ? waterResistance.equals(gloves.waterResistance) : gloves.waterResistance == null;
+        return season != null ? season.equals(gloves.season) : gloves.season == null;
     }
 
     @Override
@@ -61,7 +61,7 @@ public class Gloves extends Ammunition {
         int result = super.hashCode();
         result = 31 * result + (type != null ? type.hashCode() : 0);
         result = 31 * result + (season != null ? season.hashCode() : 0);
-        result = 31 * result + (waterResistance != null ? waterResistance.hashCode() : 0);
+        result = 31 * result + (waterResistance ? 1 : 0);
         return result;
     }
 }

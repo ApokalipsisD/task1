@@ -4,7 +4,7 @@ import com.epam.jwd.task1.entity.Equipment;
 import com.epam.jwd.task1.entity.Gloves;
 import com.epam.jwd.task1.entity.Helmet;
 import com.epam.jwd.task1.entity.Jacket;
-import com.epam.jwd.task1.logic.Operations;
+import com.epam.jwd.task1.logic.Operation;
 
 import java.util.Scanner;
 
@@ -13,11 +13,11 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Helmet helmet = new Helmet(5000, 5, "L", "Cross", "End-to-End", "thermoplastic");
         Jacket jacket = new Jacket(10000, 7, "XL", "Vestern", "zipper", 6);
-        Gloves gloves = new Gloves(2000, 1, "L", "Sport", "summer", "yes");
+        Gloves gloves = new Gloves(2000, 1, "L", "Sport", "summer", true);
 
 
         Equipment equipment = new Equipment();
-        Operations operations = new Operations(equipment, equipment.getAmmunition());
+        Operation operation = new Operation(equipment, equipment.getAmmunition());
 
         System.out.println("Введите 0 для прекращения работы.");
         System.out.println("Введите 1 для добавления 1-ого элемента.");
@@ -43,18 +43,18 @@ public class Main {
                     equipment.addElement(gloves);
                 }
                 case 4 -> {
-                    operations.calculateCost();
-                    System.out.println("Total cost: " + operations.getTotalCost());
+                    operation.calculateCost();
+                    System.out.println("Total cost: " + operation.getTotalCost());
                 }
                 case 5 -> {
-                    operations.sortByWeight();
+                    operation.sortByWeight();
                 }
                 case 6 -> {
                     System.out.println("Введите диапазон цен через пробел:");
-                    operations.itemsByPrice(scanner.nextInt(), scanner.nextInt());
+                    operation.calculateItemsByPrice(scanner.nextInt(), scanner.nextInt());
                 }
                 case 7 -> {
-                    operations.print();
+                    operation.print();
                 }
             }
         }

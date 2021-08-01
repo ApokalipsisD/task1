@@ -6,12 +6,12 @@ import com.epam.jwd.task1.entity.Equipment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Operations {
+public class Operation {
     private final Equipment equipment;
     private List<Ammunition> ammunition;
     private int totalCost;
 
-    public Operations(Equipment equipment, List<Ammunition> ammunition) {
+    public Operation(Equipment equipment, List<Ammunition> ammunition) {
         this.equipment = equipment;
         this.ammunition = ammunition;
         this.totalCost = 0;
@@ -59,7 +59,7 @@ public class Operations {
         }
     }
 
-    public void itemsByPrice(int min, int max) {
+    public void calculateItemsByPrice(int min, int max) {
         if (min < max) {
             ammunition = equipment.getAmmunition();
             List<Ammunition> newAmmunition = new ArrayList<Ammunition>();
@@ -101,7 +101,7 @@ public class Operations {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Operations that = (Operations) o;
+        Operation that = (Operation) o;
 
         if (totalCost != that.totalCost) return false;
         if (equipment != null ? !equipment.equals(that.equipment) : that.equipment != null) return false;
